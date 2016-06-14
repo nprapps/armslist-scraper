@@ -101,8 +101,3 @@ class Listing:
     def party(self):
         party = self._soup.find('strong', {'class': 'title'}).text.strip().split(' ', 1)[0]
         return party
-
-    # test URLS
-    # http://www.armslist.com/posts/5577404/montgomery-alabama-handguns-for-sale-trade--ruger-44-magnum-7-5--super-blackhawk
-    # http://www.armslist.com/posts/5534229/jacksonville-florida-rifles-for-sale--new-sig-sauer-mcx-5-56-rifle
-    # http://www.armslist.com/posts/5577694/south-west-florida-handguns-for-sale--ar-pistol
