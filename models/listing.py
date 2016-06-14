@@ -22,17 +22,39 @@ class Listing:
             return price_string
 
     @property
-    def imgs(self):
+    def img(self):
         image_tags = self._soup.find_all('img', {'class': 'gallery'}) # have to sort out repeats
         for image_tag in image_tags:
             image_url = image_tag['src']
             return image_url
 
     @property
-    def location(self):
-        location_ul = self._soup.find('ul', {'class': 'location'})
-        location_div = location_ul.find_all('div')[1]
+    def full_location(self):
+        location_icon = self._soup.find('i', {'class': 'icon-location'})
+        parent = location_icon.parent.parent
+        location_div = parent.find_all('div')[1]
         return location_div.text.strip()
+
+    @property
+    def location(self):
+        parts = self.full_location.split(', ')
+        return ', '.join(parts[0:-2])
+
+    @property
+    def city(self):
+        parts = self.full_location.split(', ')
+        if parts[-1] == 'United States':
+            return None
+        else:
+            return parts[-2]
+
+    @property
+    def state(self):
+        parts = self.full_location.split(', ')
+        if parts[-1] == 'United States':
+            return parts[-2]
+        else:
+            return parts[-1]
 
     @property
     def description(self):
