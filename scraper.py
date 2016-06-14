@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import requests
+import sys
 
 from bs4 import BeautifulSoup
 from collections import OrderedDict
@@ -9,7 +10,7 @@ from datetime import datetime
 ARMSLIST_URL = 'http://www.armslist.com/classifieds/search'
 STOP_DATETIME = datetime(2016, 6, 13, 0, 0, 0)
 
-def scrape(stop_datetime):
+def scrape(state, stop_datetime):
     param_arguments = [('location', 'usa'), ('category', 'guns'), ('posttype', '3'), ('page', 1)]
     params = OrderedDict(param_arguments)
     stop = False
@@ -35,4 +36,9 @@ def scrape(stop_datetime):
         params['page'] += 1
 
 if __name__ == '__main__':
-    scrape(STOP_DATETIME)
+    if len(sys.argv) == 1:
+        print('state name required')
+        sys.exit()
+
+    state = str(sys.argv[1])
+    scrape(state=state, stop_datetime=STOP_DATETIME)
