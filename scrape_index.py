@@ -3,6 +3,7 @@
 Scrape a state's listings page to harvest listing links.
 """
 
+import csv
 import requests
 import sys
 
@@ -23,6 +24,7 @@ DEFAULT_QUERY_ARGUMENTS = [
 def scrape_index(state, stop_datetime):
     params = OrderedDict(DEFAULT_QUERY_ARGUMENTS)
     params['location'] = state
+    writer = csv.writer(sys.stdout)
 
     while True:
         response = requests.get(ARMSLIST_SEARCH_URL, params=params)
@@ -32,7 +34,7 @@ def scrape_index(state, stop_datetime):
             break
 
         for item in page.items:
-            print('{0},{1},{2}'.format(item.url, state, item.listing_date))
+            writer.writerow([item.url, state, item.listing_date])
 
         params['page'] += 1
 
