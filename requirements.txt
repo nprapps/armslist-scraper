@@ -1,8 +1,9 @@
+SQLAlchemy==1.0.13
 appnope==0.1.0
 backports.shutil-get-terminal-size==1.0.0
 beautifulsoup4==4.4.1
 csvkit==0.9.1
-dbf==0.94.3
+dbf==0.94.003
 decorator==4.0.10
 gnureadline==6.3.3
 ipdb==0.10.0
@@ -10,7 +11,7 @@ ipython==4.2.0
 ipython-genutils==0.1.0
 jdcal==1.2
 jellyfish==0.5.1
-openpyxl==2.2.0b1
+openpyxl==2.2.0-b1
 pathlib2==2.1.0
 pexpect==4.1.0
 pickleshare==0.7.2
@@ -19,7 +20,8 @@ python-dateutil==2.2
 requests==2.10.0
 simplegeneric==0.8.1
 six==1.10.0
-SQLAlchemy==1.0.13
 traitlets==4.2.1
+unicodecsv==0.14.1
 us==0.9.1
+wsgiref==0.1.2
 xlrd==1.0.0
