@@ -14,8 +14,12 @@ class Listing:
     @property
     def price(self):
         span_contents = self._soup.find('span', {'class': 'price'})
-        junk, price = span_contents.string.strip().split('$ ')
-        return price
+        price_string = span_contents.string.strip()
+        if price_string.startswith('$'):
+            junk, price = span_contents.string.strip().split('$ ')
+            return price
+        else:
+            return price_string
 
     @property
     def imgs(self):
