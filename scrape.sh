@@ -1,3 +1,3 @@
 #!/bin/bash
 
-parallel ./scrape_index.py ::: `./states.py` > cache/index.csv
+./states.py | parallel --results cache/states ./scrape_index.py {} > cache/index.csv
