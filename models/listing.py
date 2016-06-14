@@ -81,17 +81,26 @@ class Listing:
 
     @property
     def post_id(self):
-        return self._post_meta.find('span', {'class': 'user-id'}).text.strip()
+        return self._post_meta.find('span', {'class': 'user-id'}).text.strip().split(':  ')[1]
 
     @property
     def registered(self):
         info_div = self._soup.find('div', {'class': 'info-holder'})
         time_tag = info_div.find('time')
-        if not time_tag:
-            time_tag = 'Unregistered'
-        return time_tag.text.strip()
+        if time_tag:
+            time_tag = True
+        else:
+            time_tag = False
+        return time_tag
+        # returns if unregistered or registered and date
+        # if not time_tag:
+        #     time_tag = 'Unregistered'
+        # return time_tag.text.strip()
 
-    # registered (t/f) or user type private reg, private unreg
+    @property
+    def party(self):
+        party = self._soup.find('strong', {'class': 'title'}).text.strip().split(' ', 1)[0]
+        return party
 
     # test URLS
     # http://www.armslist.com/posts/5577404/montgomery-alabama-handguns-for-sale-trade--ruger-44-magnum-7-5--super-blackhawk
