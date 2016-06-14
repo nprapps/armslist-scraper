@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 
+import csv
 import sys
 import requests
 
 from models.listing import Listing
 
 def scrape_listing(url):
+    writer = csv.writer(sys.stdout)
     response = requests.get(url)
     listing = Listing(response.content)
     # print('Title: ' + listing.title)
@@ -22,6 +24,23 @@ def scrape_listing(url):
     # print('Post ID: ' + listing.post_id)
     # print('Registration: ' + str(listing.registered))
     # print('Party Type: ' + listing.party)
+    writer.writerow([
+        listing.post_id,
+        listing.title,
+        listing.listed_date,
+        listing.price,
+        listing.location,
+        listing.description,
+        listing.registered,
+        listing.category,
+        listing.manufacturer,
+        listing.caliber,
+        listing.action,
+        listing.firearm_type,
+        listing.party,
+        listing.imgs
+    ])
+
     print('{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}'.format(listing.title, listing.listed_date, listing.post_id, listing.price, listing.location, listing.description, listing.registered, listing.category, listing.manufacturer, listing.caliber, listing.action, listing.firearm_type, listing.party, listing.imgs))
 
 if __name__ == '__main__':
