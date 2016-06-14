@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 
-import csv
 import sys
 import requests
+import unicodecsv as csv
 
 from models.listing import Listing
+from utils import eprint
+
 
 def scrape_listing(url):
+    eprint(url)
     writer = csv.writer(sys.stdout)
     response = requests.get(url)
     listing = Listing(response.content)
@@ -41,7 +44,6 @@ def scrape_listing(url):
         listing.imgs
     ])
 
-    print('{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}'.format(listing.title, listing.listed_date, listing.post_id, listing.price, listing.location, listing.description, listing.registered, listing.category, listing.manufacturer, listing.caliber, listing.action, listing.firearm_type, listing.party, listing.imgs))
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
