@@ -13,6 +13,12 @@ def scrape_listing(url):
     # print(listing.imgs)
     print('Location: ' + listing.location)
     print('Description: ' + listing.description)
+    print('Category: ' + listing.category)
+    print('Manufacturer: ' + listing.manufacturer)
+    print('Caliber: ' + listing.caliber)
+    print('Action: ' + listing.action)
+    print('Firearm Type: ' + listing.firearm_type)
+
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:

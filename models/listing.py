@@ -4,6 +4,7 @@ class Listing:
     def __init__(self, html):
         self._html = html
         self._soup = BeautifulSoup(self._html, 'html.parser')
+        self._characteristics = self._soup.find('ul', {'class': 'category'}).find_all('li')
 
     @property
     def title(self):
@@ -34,8 +35,50 @@ class Listing:
         desc = self._soup.find('div', {'class': 'postContent'})
         return desc.text.strip()
 
+    @property
+    def category(self):
+        for item in self._characteristics:
+            key = item.find_all('span')[0].text.strip().lower()
+            if key == 'category':
+                value = item.find_all('span')[1].text.strip()
+                return value
 
-    # cat, man, cali, action, firetype, listed on, postID
+    @property
+    def manufacturer(self):
+        for item in self._characteristics:
+            key = item.find_all('span')[0].text.strip().lower()
+            if key == 'manufacturer':
+                value = item.find_all('span')[1].text.strip()
+                return value
+
+    @property
+    def caliber(self):
+        for item in self._characteristics:
+            key = item.find_all('span')[0].text.strip().lower()
+            if key == 'caliber':
+                value = item.find_all('span')[1].text.strip()
+                return value
+
+    @property
+    def action(self):
+        for item in self._characteristics:
+            key = item.find_all('span')[0].text.strip().lower()
+            if key == 'action':
+                value = item.find_all('span')[1].text.strip()
+                return value
+
+    @property
+    def firearm_type(self):
+        for item in self._characteristics:
+            key = item.find_all('span')[0].text.strip().lower()
+            if key == 'firearm type':
+                value = item.find_all('span')[1].text.strip()
+                return value
+
+
+
+
+    # listed on, postID
     # registered (t/f) or user type private reg, private unreg
 
     # test URLS
