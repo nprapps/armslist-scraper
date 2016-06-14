@@ -5,6 +5,7 @@ class Listing:
         self._html = html
         self._soup = BeautifulSoup(self._html, 'html.parser')
         self._characteristics = self._soup.find('ul', {'class': 'category'}).find_all('li')
+        self._post_meta = self._soup.find('div', {'class': 'info-time'})
 
     @property
     def title(self):
@@ -19,16 +20,15 @@ class Listing:
     @property
     def imgs(self):
         image_tags = self._soup.find_all('img', {'class': 'gallery'}) # have to sort out repeats
-        return image_tags
-        # for image_tag in image_tags:
-        #     image_url = image_tag.img['src']
-        #     return image_url
+        for image_tag in image_tags:
+            image_url = image_tag['src']
+            return image_url
 
     @property
     def location(self):
         location_ul = self._soup.find('ul', {'class': 'location'})
         location_div = location_ul.find_all('div')[1]
-        return location_div.text.strip() #coming out as unicode string instead of regular
+        return location_div.text.strip()
 
     @property
     def description(self):
@@ -75,10 +75,22 @@ class Listing:
                 value = item.find_all('span')[1].text.strip()
                 return value
 
+    @property
+    def listed_date(self):
+        return self._post_meta.find('span', {'class': 'date'}).text.strip()
 
+    @property
+    def post_id(self):
+        return self._post_meta.find('span', {'class': 'user-id'}).text.strip()
 
+    @property
+    def registered(self):
+        info_div = self._soup.find('div', {'class': 'info-holder'})
+        time_tag = info_div.find('time')
+        if not time_tag:
+            time_tag = 'Unregistered'
+        return time_tag.text.strip()
 
-    # listed on, postID
     # registered (t/f) or user type private reg, private unreg
 
     # test URLS
