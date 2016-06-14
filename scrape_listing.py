@@ -13,26 +13,15 @@ def scrape_listing(url):
     writer = csv.writer(sys.stdout)
     response = requests.get(url)
     listing = Listing(response.content)
-    # print('Title: ' + listing.title)
-    # print('Price: ' + listing.price)
-    # print('Image URLs: ' + listing.imgs)
-    # print('Location: ' + listing.location)
-    # print('Description: ' + listing.description)
-    # print('Category: ' + listing.category)
-    # print('Manufacturer: ' + listing.manufacturer)
-    # print('Caliber: ' + listing.caliber)
-    # print('Action: ' + listing.action)
-    # print('Firearm Type: ' + listing.firearm_type)
-    # print('Listing Date: ' + listing.listed_date)
-    # print('Post ID: ' + listing.post_id)
-    # print('Registration: ' + str(listing.registered))
-    # print('Party Type: ' + listing.party)
     writer.writerow([
+        url,
         listing.post_id,
         listing.title,
         listing.listed_date,
         listing.price,
         listing.location,
+        listing.city,
+        listing.state,
         listing.description,
         listing.registered,
         listing.category,
@@ -41,7 +30,7 @@ def scrape_listing(url):
         listing.action,
         listing.firearm_type,
         listing.party,
-        listing.imgs
+        listing.img
     ])
 
 
