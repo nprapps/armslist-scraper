@@ -61,3 +61,5 @@ Finally, run the script:
 ## What to expect
 
 The scraper will output the listings into a csv format. Running script will make two main csv files: cache/index.csv is a master of all listings with the URL, state and date; and listings.csv will be the bulk of the data with each listing and the associated details.
+
+Don't worry if the script is taking a long time to run. There's a lot of data coming so that's expected. 
