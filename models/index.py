@@ -5,7 +5,7 @@ ARMSLIST_URL = 'http://www.armslist.com'
 
 class IndexPage:
     def __init__(self, html, stop_datetime):
-        """Makes global variables.
+        """Takes page elements and creates global variables.
 
         The function recieves self, page html markup and configured date
         and assigns it to global variables within the class to be used. It also defines
