@@ -21,16 +21,15 @@ The following things are assumed to be true in this documentation.
 * You are running OSX.
 * You are using Python 2.7. (Probably the version that came OSX.)
 * You have virtualenv and virtualenvwrapper installed and working.
+* You have GNU Parallel installed -- a shell tool to execute multiple commands from standard input simultaneously.
 
-For more details on the technology stack used with the app-template, see our development environment blog post.
+For more details on the technology stack used with the app-template, see our [development environment blog post](http://blog.apps.npr.org/2013/06/06/how-to-setup-a-developers-environment.html).
 
-## Requirements <a id="requirements"></a>
-
-* Parallel -- a shell tool to execute multiple commands from standard input simultaneously
+This code should work fine in most recent versions of Linux, but package installation and system dependencies may vary.
 
 ## Installation <a id="installation"></a>
 
-If you don’t already have parallel, get it like this:
+If you don’t already have GNU Parallel, get it like this:
 
 ```
 brew install parallel
@@ -60,6 +59,12 @@ Finally, run the script:
 
 ## What to expect <a id="what-to-expect"></a>
 
-The scraper will output the listings into a csv format. Running script will make two main csv files: cache/index.csv is a master of all listings with the URL, state and date; and listings.csv will be the bulk of the data with each listing and the associated details.
+The scraper will output the listings into a csv format. 
 
-Don't worry if the script is taking a long time to run. There's a lot of data coming so that's expected. 
+Running script will make two main csv files as well as some extra files that may be handy for testing:
+
+* `cache/index.csv` is a master index of listings with the URL, state and date. This file is used to scrape each page individually.
+* `cache/listings.csv` is the bulk of the data. Each row represents a listing and the associated details.
+* `cache/state/1/<statename>` includes the log messages in a file called `stderr` and scraped index page data in a file called `stdout` on a per state basis.
+
+The script could take a long time to run. We recommend using a fairly powerful Amazon EC2 instance in the Virginia/us-east-1 region to run the scraper.
