@@ -7,8 +7,12 @@ import us
 
 def print_states():
     for state in us.states.STATES:
-        name = state.name.lower().replace(' ', '-')
-        print(name)
+        if state.name == 'New Jersey':
+            print('nj')
+        else:
+            name = state.name.lower().replace(' ', '-')
+            print(name)
+
     print('puerto-rico-usa')
     print('guam-usa')
 
