@@ -35,7 +35,7 @@ def scrape_listing(url):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) == 1:
+    if len(sys.argv) != 2:
         print('url required')
         sys.exit()
 
