@@ -60,6 +60,6 @@ Finally, run the script:
 
 ## What to expect <a id="what-to-expect"></a>
 
-The scraper will output the listings into a csv format. Running script will make two main csv files: cache/index.csv is a master of all listings with the URL, state and date; and listings.csv will be the bulk of the data with each listing and the associated details.
+The scraper will output the listings into a csv format. Running script will make three main csv files in the cache directory: index.csv is a master of all listings with the URL, state and date; index-deduped.csv is a deduplicated master with all listings with only unique ids; and listings.csv will be the bulk of the data with each listing and the associated details.
 
-Don't worry if the script is taking a long time to run. There's a lot of data coming so that's expected. 
+Don't worry if the script is taking a long time to run. There's a lot of data coming so that's expected.

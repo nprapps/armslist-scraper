@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 
 class Listing:
     def __init__(self, html):
-        """Takes page elements and creates global variables.
+        """Takes page elements and creates globacl class variables.
 
         The function recieves self and page html markup of a listing page then assigns
         it to global variables within the class. It also defines BeautifulSoup and
@@ -187,7 +187,8 @@ class Listing:
         """Returns a boolean for registration status
 
         Function finds the 'time' class and if there is a time tag associated,
-        returns true, else returns false
+        returns true, else returns false. Commented code can return registered or
+        unregistered as strings vs. booleans
         """
         info_div = self._soup.find('div', {'class': 'info-holder'})
         time_tag = info_div.find('time')

@@ -1,6 +1,8 @@
 #!/usr/bin/env python
-"""
-Print state names for use in the scraper script.
+"""Print state names for use in the scraper script.
+
+The function uses us package to print states for running the listing script.
+Runs check for NJ, Puerto Rico and Guam due to inconsistantcies in armslist URLs.
 """
 import us
 
