@@ -93,6 +93,8 @@ class Listing:
         parts = self.full_location.split(', ')
         if parts[-1] == 'United States':
             return parts[-2]
+        elif parts[-1] == 'South Florida':
+            return 'Florida'
         else:
             return parts[-1]
 

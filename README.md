@@ -4,18 +4,18 @@ Copyright 2016 NPR. All rights reserved. No part of these materials may be repro
 
 # Armslist
 
-* What is this?
-* Assumptions
-* Requirements
-* Installation
-* Run the project
-* What to expect
+* [What is this?](#what-is-this)
+* [Assumptions] (#assumptions)
+* [Requirements] (#requirements)
+* [Installation] (#installation)
+* [Run the project] (#run)
+* [What to expect] (#what-to-expect)
 
-## What is this?
+## What is this? <a id="what-is-this"></a>
 
 Armslist is a tool for aggregating listings from Armslist.com, a site used as a marketplace for buying and selling guns.  
 
-## Assumptions
+## Assumptions <a id="assumptions"></a>
 
 The following things are assumed to be true in this documentation.
 * You are running OSX.
@@ -24,11 +24,11 @@ The following things are assumed to be true in this documentation.
 
 For more details on the technology stack used with the app-template, see our development environment blog post.
 
-## Requirements
+## Requirements <a id="requirements"></a>
 
 * Parallel -- a shell tool to execute multiple commands from standard input simultaneously
 
-## Installation
+## Installation <a id="installation"></a>
 
 If you don’t already have parallel, get it like this:
 
@@ -43,7 +43,7 @@ git clone git@github.com:nprapps/armslist.git
 cd armslist
 ```
 
-## Run the project
+## Run the project <a id="run"></a>
 
 Next, create a virtual environment and install the requirements:
 
@@ -58,7 +58,7 @@ Finally, run the script:
 ./scrape.sh
 ```
 
-## What to expect
+## What to expect <a id="what-to-expect"></a>
 
 The scraper will output the listings into a csv format. Running script will make two main csv files: cache/index.csv is a master of all listings with the URL, state and date; and listings.csv will be the bulk of the data with each listing and the associated details.
 
