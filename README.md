@@ -6,7 +6,6 @@ Copyright 2016 NPR. All rights reserved. No part of these materials may be repro
 
 * [What is this?](#what-is-this)
 * [Assumptions] (#assumptions)
-* [Requirements] (#requirements)
 * [Installation] (#installation)
 * [Run the project] (#run)
 * [What to expect] (#what-to-expect)
